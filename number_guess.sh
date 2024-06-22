@@ -24,7 +24,7 @@ else
     echo "Welcome back, $USERNAME! You have played $GAME_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
-echo -e "\nGuess the secret number between 1 and 1000:"
+echo "Guess the secret number between 1 and 1000:"
 GUESS_COUNT=0
 until [[ $USER_GUESS -eq $RANDOM_NUMBER ]]
 do
