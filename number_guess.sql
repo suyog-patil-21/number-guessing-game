@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Debian 16.3-1.pgdg120+1)
--- Dumped by pg_dump version 16.3 (Debian 16.3-1.pgdg120+1)
+-- Dumped from database version 12.17 (Ubuntu 12.17-1.pgdg22.04+1)
+-- Dumped by pg_dump version 12.17 (Ubuntu 12.17-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,13 +18,13 @@ SET row_security = off;
 
 DROP DATABASE number_guess;
 --
--- Name: number_guess; Type: DATABASE; Schema: -; Owner: postgres
+-- Name: number_guess; Type: DATABASE; Schema: -; Owner: freecodecamp
 --
 
-CREATE DATABASE number_guess WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'en_US.utf8';
+CREATE DATABASE number_guess WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'C.UTF-8' LC_CTYPE = 'C.UTF-8';
 
 
-ALTER DATABASE number_guess OWNER TO postgres;
+ALTER DATABASE number_guess OWNER TO freecodecamp;
 
 \connect number_guess
 
@@ -44,21 +44,21 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: game; Type: TABLE; Schema: public; Owner: postgres
+-- Name: game; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
 CREATE TABLE public.game (
     user_id integer NOT NULL,
-    username character varying(22) NOT NULL,
+    username character varying NOT NULL,
     games_played integer DEFAULT 0,
-    best_game_guess integer
+    best_game_guess integer DEFAULT 0
 );
 
 
-ALTER TABLE public.game OWNER TO postgres;
+ALTER TABLE public.game OWNER TO freecodecamp;
 
 --
--- Name: game_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: game_user_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
 CREATE SEQUENCE public.game_user_id_seq
@@ -70,37 +70,37 @@ CREATE SEQUENCE public.game_user_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.game_user_id_seq OWNER TO postgres;
+ALTER TABLE public.game_user_id_seq OWNER TO freecodecamp;
 
 --
--- Name: game_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: game_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
 --
 
 ALTER SEQUENCE public.game_user_id_seq OWNED BY public.game.user_id;
 
 
 --
--- Name: game user_id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: game user_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.game ALTER COLUMN user_id SET DEFAULT nextval('public.game_user_id_seq'::regclass);
 
 
 --
--- Data for Name: game; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: game; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
 
 
 --
--- Name: game_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: game_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.game_user_id_seq', 5, true);
+SELECT pg_catalog.setval('public.game_user_id_seq', 1, true);
 
 
 --
--- Name: game game_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: game game_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.game
@@ -108,7 +108,7 @@ ALTER TABLE ONLY public.game
 
 
 --
--- Name: game game_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: game game_username_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.game

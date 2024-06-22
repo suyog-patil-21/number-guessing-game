@@ -42,7 +42,7 @@ do
             echo "It's higher than that, guess again:"
         else 
             (( GAME_PLAYED +=1 ))
-            if [[ $GUESS_COUNT -le $BEST_GAME ]] 
+            if [[  ( $BEST_GAME -eq 0 ) || ( $GUESS_COUNT -gt 0 && $GUESS_COUNT -lt $BEST_GAME ) ]] 
             then 
                 UPDATE_USER_RESULT=$($PSQL "UPDATE game SET games_played = $GAME_PLAYED, best_game_guess=$GUESS_COUNT WHERE user_id=$USER_ID")
             else
